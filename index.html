@@ -3,67 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clips Gallery</title>
+    <title>Elite Clips Vault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg0: #070A12;
-            --text: rgba(255,255,255,.92);
+            --bg: #050505;
+            --accent: #ff3366; /* Neon Pink Glow */
+            --text: #ffffff;
         }
+
         body {
-            background-color: var(--bg0);
+            background-color: var(--bg);
             color: var(--text);
-            font-family: sans-serif;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #2a0845 0%, #050505 70%);
         }
-        .video-container {
-            max-width: 800px;
-            width: 100%;
-            margin-top: 20px;
+
+        /* Animated Background Elements */
+        .bg-blob {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, var(--accent), #7b2cbf);
+            filter: blur(100px);
+            opacity: 0.3;
+            z-index: -1;
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        .bg-blob:nth-child(1) { top: -100px; left: -100px; }
+        .bg-blob:nth-child(2) { bottom: -100px; right: -100px; animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Header Styling */
+        header {
             text-align: center;
+            padding: 50px 20px;
+            animation: fadeInDown 1s ease-out;
         }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+        }
+
+        p.subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Video Container Styling (Glassmorphism) */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 51, 102, 0.2);
+            border-color: rgba(255, 51, 102, 0.3);
+        }
+
+        .video-title {
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Stylish Video Element */
         video {
             width: 100%;
             border-radius: 12px;
-            box-shadow: 0 14px 60px rgba(0,0,0,.55);
+            outline: none;
+            background: #000;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.05);
         }
-        h3 {
-            margin-bottom: 20px;
+
+        /* Custom Play Button Overlay */
+        .video-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <div class="video-container">
-        <h3>Cristiano Ronaldo Clips</h3>
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+
+    <header>
+        <h1>Elite Clips Vault</h1>
+        <p class="subtitle">High-Quality Edits & Raw Footage</p>
+    </header>
+
+    <div class="gallery">
         
-        <video controls poster="cristiano ronaldo 4k clips _ ronaldo clips for edit.jpg">
-            <source src="henry_v_ronaldo_fight_720p.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+        <div class="video-card">
+            <h2 class="video-title">Cristiano Ronaldo 4K Highlights</h2>
+            
+            <div class="video-wrapper">
+                <video controls poster="cristiano ronaldo 4k clips _ ronaldo clips for edit.jpg">
+                    <source src="henry_v_ronaldo_fight_720p.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="henry_v_ronaldo_fight_720p.mp4" download class="download-btn">⬇ Download Clip (720p)</a>
+            </div>
+        </div>
+
+        </div>
 
 </body>
 </html>
-    <h2>My Video Clips</h2>
-
-    <div class="video-container">
-        <video controls poster="cristiano ronaldo 4k clips _ ronaldo clips for edit.jpg">
-            <source src="henry_v_ronaldo_fight_720p.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-</body>
-</html>
-      
-      <video width="700" controls>
-  <source src="clip1.mp4" type="video/mp4">
-</video>
-    }
 
     /* ambient grain */
     .grain:before{
