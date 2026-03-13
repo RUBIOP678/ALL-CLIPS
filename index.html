@@ -10,18 +10,6 @@
             --text: rgba(255,255,255,.92);
         }
         body {
-           <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clips Gallery</title>
-    <style>
-        :root {
-            --bg0: #070A12;
-            --text: rgba(255,255,255,.92);
-        }
-        body {
             background-color: var(--bg0);
             color: var(--text);
             font-family: sans-serif;
@@ -29,21 +17,37 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            margin: 0;
         }
         .video-container {
             max-width: 800px;
             width: 100%;
             margin-top: 20px;
+            text-align: center;
         }
         video {
             width: 100%;
             border-radius: 12px;
             box-shadow: 0 14px 60px rgba(0,0,0,.55);
         }
+        h3 {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
+    <div class="video-container">
+        <h3>Cristiano Ronaldo Clips</h3>
+        
+        <video controls poster="cristiano ronaldo 4k clips _ ronaldo clips for edit.jpg">
+            <source src="henry_v_ronaldo_fight_720p.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+</body>
+</html>
     <h2>My Video Clips</h2>
 
     <div class="video-container">
