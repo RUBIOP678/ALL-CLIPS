@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <video width="700" controls>
-  <source src="clip1.mp4" type="video/mp4">
-</video>
-    :root{
-      --bg0:#070A12;
-      --bg1:#0B1022;
-      --card:#0f1733cc;
-      --stroke: rgba(255,255,255,.10);
-      --stroke2: rgba(255,255,255,.08);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.66);
-      --muted2: rgba(255,255,255,.45);
-      --shadow: 0 14px 60px rgba(0,0,0,.55);
-      --shadow2: 0 8px 30px rgba(0,0,0,.35);
-      --r: 18px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clips Gallery</title>
+    <style>
+        :root {
+            --bg0: #070A12;
+            --text: rgba(255,255,255,.92);
+        }
+        body {
+            background-color: var(--bg0);
+            color: var(--text);
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .video-container {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        video {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 14px 60px rgba(0,0,0,.55);
+        }
+    </style>
+</head>
+<body>
 
-    html,body{height:100%}
-    body{
+    <h2>My Video Clips</h2>
+
+    <div class="video-container">
+        <video controls poster="cristiano ronaldo 4k clips _ ronaldo clips for edit.jpg">
+            <source src="henry_v_ronaldo_fight_720p.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+</body>
+</html>
       
       <video width="700" controls>
   <source src="clip1.mp4" type="video/mp4">
